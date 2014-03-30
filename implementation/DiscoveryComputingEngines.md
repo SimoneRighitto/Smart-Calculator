@@ -37,11 +37,11 @@ But before starting with technical details here a brief overview of covered Chap
 
 ## 2. Terminology
 
->This is a glossary section, where you define the important terms used in your specification. It is obviously critical to be clear, consistent and precise when writing a specification. Using the same terms throughout the document is therefore important.
+>This is a glossary section, we will fix some terms that are used in this specification
 
-**TERM_NAME**: definition
+**Computing engine**: the server side in the protocol. It is a machine that let a client execute commands
 
-**TERM_NAME**: definition
+**Smart calculator**: the client side in the protocol. It is a machine that need a computing engine to execute commands
 
 
 ## 3. Protocol Overview
@@ -83,34 +83,52 @@ The client send an HELLO message over broadcast and then listen to computing eng
 
 ## 4. Protocol Details
 
->In this section, you should provide **all the information that is required for the readers to do a detailed design and an implementation of the software components** that will use your protocol to interact with each other. The readers should find a clear description of the communication patterns, the syntax and semantics of messages and of other rules defined by the protocol.
+>In this section, we will describe all details of our Dynamic Discovery protocol.
 
 ### 4.1. Transport Protocols and Connections
 
->In this paragraph, you should explain which protocols are used to transport application-level messages. You should define the standard port(s) (in the same way that HTTP defines 80 as the standard TCP port). You should also explain how the components start to interact with each other. If a connection is established, then how is it established and what is the procedure that needs to be implemented?
+>The Dynamic Discovery protocol works over UDP and uses port 5050.
 
 >The first step before a client can establish a connection with the server it must know his address. 
-Computing engines are listening over UDP (port 5050) for DISCOVERY message from clients. When a client start up and need to connect to a computing engine it will send a DISCOVERY message on broadcast mode
-over UDP (port 5050). The server receive the DISCOVERY call and send back an UDP datagram to the client containing his IP address and the TCP port where is listening for connection (TCP port 6060). This response message is called HERE_I_AM. 
+Computing engines are listening over UDP (port 5050) for HELLO message from clients. When a client start up and need to connect to a computing engine it will send a HELLO message on broadcast mode
+over UDP (port 5050). The server receive the HELLO call and send back an UDP datagram to the client containing his IP address and the TCP port where is listening for connection (TCP port 6060). This response message is called HERE_I_AM. 
 
->Now we can start a TCP connection.
-The client send an HELLO message to the server.
-The server 
 
 ### 4.2. State Management
 
->In this paragraph, you should explain whether your protocol is stageful or stateless. If it is stageful, then you should describe all the states in which an application session can be, what events can happen in each of these states and what are the possible transitions between the states and what happens during these transitions.
-
->Start by showing a state machine diagram, which will give an overview to the readers. Then provide a detailed description of each state.
+>In this section we can see the state diagram of our protocol
 
 <center><img width=320 src="images/04/stateMachineDiagram.png"></center>
 
 
-#### 4.2.1. State NAME_OF_THE_STATE_1
+#### 4.2.1. Computing engine state
 
-> In this paragraph, you should describe one particular state that appears on the state machine diagram. You should explain what it means for the conversation to be in this state. You should also explain what events are expected to happen while the conversation is in this state and what messages can be accepted from the other component. You should describe what should happen when these events happen (transition to another state, emission of a message, etc).
-> 
-> Sometimes, you will specify timing constraints in this part of the document. For example, you could state that when the conversation enters a particular state, then a timer is started and emits a signal after a given time. This signal would be considered as a specific event, that might trigger a transition to another state and other side effects (closing of a connection, emission of a message, etc.).
+#### 4.2.1.0 Start UP
+
+>This is the first state of a computing engine. When the application start the first thing it does is send a HERE_I_AM message to inform eventual smart calculator already running that a new computer engine is disponible
+
+#### 4.2.1.1 Listening
+
+>After having informed all already started clients the server listen on UDP port 5050 for HELLO messages
+
+#### 4.2.1.2 Responding
+
+>When an HELLO message is received, the computing engine must respond to the client who has sent the HELLO with the HERE_I_AM message
+
+#### 4.2.2. Smart calculator state
+
+#### 4.2.2.0 StartUP
+
+>This is the first state of smart calculator. When the application start the first thing to do is broadcast an HELLO message to receive all disponibles computing engines
+
+#### 4.2.2.1 Waiting response
+
+>After sending the HELLO, the client must wait for incoming HERE_I_AM messages
+
+#### 4.2.2.2 running
+
+>The running state is a state that is not defined on the discovery protocol. This state is intended to communicate with the server using informations received with the HERE_I_AM message and the specification
+is given on the second part of the Distributed Computing Protocol.
 
 ### 4.3. Message Types, Syntax and Semantics
 
@@ -122,21 +140,12 @@ The server
 
 >The next messages are used for a first contact between a client and a computing engine 
 
-##### 4.3.1.1 DISCOVERY
+##### 4.3.1.1 HELLO
 > message sent by a client who need the list of computing engines
 
 ##### 4.3.1.2 HERE_I_AM
 > message sent by the computing engine to announce it selfe to the client
 
-#### 4.3.2. TCP messages
-
->The next messages are used when the client know the server and wants to connect
-
-##### 4.3.2.1 HELLO
-> message sent by a client who wants to connect
-
-##### 4.3.2.2 
-> message sent by the computing engine to announce it selfe to the client
 
 ### 4.4. Miscellaneous Considerations
 
