@@ -46,18 +46,19 @@ But before starting with technical details here a brief overview of covered Chap
 
 ## 3. Protocol Overview
 
->In this section, you should provide **all the information that is required for the readers to do a high-level design of the software components** that will use your protocol to interact with each other. The readers should have a clear picture of which components are involved, why they need to interact with each other and how they interact with each other.
+>The protocol is based on the idea of "I need you, where are you?" and the response "I'm at ...". Basically a client start up and need to know the IP address and port where a computing engine is listening.
+The client send an HELLO message over broadcast and then listen to computing engines HERE_I_AM messages.
 
 
 ### 3.1. System Architecture
 
 >Insert at least one **component diagram** here, to show a high-level overview of the system. The diagram should show the different types of components, their interfaces and their high-level interactions.
 
-<center><img width=520 src="images/04/componentDiagram.png"></center>
+<center><img width=520 src="images/03/component_diag.png"></center>
 
 ### 3.2. System Components
-
-> Smart calculator : the client side of the protocol. 
+>
+Smart calculator : the client side of the protocol. 
 Computing engine: the server side of the protocol. 
 
 
