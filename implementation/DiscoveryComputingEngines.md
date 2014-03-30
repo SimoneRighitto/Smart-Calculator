@@ -22,7 +22,7 @@ speak with them. So we can say that the main goal of the discovery protocol is t
 
 Just to introduce the general idea:
 This protocol uses some defined messages and the broadcasting technique. 
-The protocol is divided in 2 possible scenario.
+The protocol is divided in 2 possible scenario:
 - The client start up and need to discovery computing engines 
 - A computing engine start up and need to announce itself to already active clients
 
@@ -57,13 +57,18 @@ But before starting with technical details here a brief overview of covered Chap
 
 ### 3.2. System Components
 
->In this paragraph, you should describe all components in your distributed system. In some protocols, it means that you will describe a client and a server. In other protocols, you will have more components, such as gateways or proxies. Sometimes, it is valuable to include users, or more precisely user roles, in the list.
+> Smart calculator : the client side of the protocol. 
+Computing engine: the server side of the protocol. 
 
->In the template, we have created a placeholder paragraph that describes one of the components (COMPONENT_NAME_1). You should have as many such paragraphs as there are components in your system (and in the components diagram that you have provided before).
 
-#### 3.2.1. Component COMPONENT_NAME_1
+#### 3.2.1. Smart calculator
 
->In this paragraph, the component COMPONENT_NAME_1 should be described. **What is its role** in the overall system architecture? What are the **important and interesting aspects** that the readers should be aware of? What is/are the interface(s) that are provided by the component? How do users interact with the component? Typically, it is possible to describe a component with a couple of paragraphs. This is not the place to provide all technical details yet.
+> The smart calculator is a machine that want access at computing services provided by computing engine. The principal role of a client in this protocol is to broadcast HELLO messages at start, and to listen to HERE_I_AM computing engine response (response message that could be directly addresses to client IP or broadcasted )
+
+
+#### 3.2.2. Computing engine
+
+> The computing engine is a machine that must listen for clients HELLO message and it must provide HERE_I_AM messages. The response message is provided at a specified smart calculator when a HELLO message is recieved or it is broadcasted when the computing engine start up.
 
 ### 3.3. Interactions Between Components
 
