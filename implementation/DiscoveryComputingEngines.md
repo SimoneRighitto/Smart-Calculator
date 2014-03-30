@@ -5,11 +5,12 @@
 Author              : Olivier Liechti, HEIG-VD
 Last revision date  : 21.03.2014
 
-Revision history
-         22.03.2014 : did this
-         23.03.2014 : added that
-         24.03.2014 : modified this
+Modified by			: Simone Righitto , Anthony Roubaty
+date				: 30.03.2014
 
+Revision history
+         27.03.2014 : writing the discovery protocol 
+         30.03.2014 : added messages specification
 
 ```
 
@@ -69,6 +70,14 @@ Revision history
 
 >In this paragraph, you should explain which protocols are used to transport application-level messages. You should define the standard port(s) (in the same way that HTTP defines 80 as the standard TCP port). You should also explain how the components start to interact with each other. If a connection is established, then how is it established and what is the procedure that needs to be implemented?
 
+>The first step before a client can establish a connection with the server it must know his address. 
+Computing engines are listening over UDP (port 5050) for DISCOVERY message from clients. When a client start up and need to connect to a computing engine it will send a DISCOVERY message on broadcast mode
+over UDP (port 5050). The server receive the DISCOVERY call and send back an UDP datagram to the client containing his IP address and the TCP port where is listening for connection (TCP port 6060). This response message is called HERE_I_AM. 
+
+>Now we can start a TCP connection.
+The client send an HELLO message to the server.
+The server 
+
 ### 4.2. State Management
 
 >In this paragraph, you should explain whether your protocol is stageful or stateless. If it is stageful, then you should describe all the states in which an application session can be, what events can happen in each of these states and what are the possible transitions between the states and what happens during these transitions.
@@ -90,9 +99,25 @@ Revision history
 
 > It is a good idea to write one paragraph for each type of message. Very often, you will also want to document some decisions that are valid for all messages. For example, you could state that all messages are encoded in JSON or in XML. Or, if you are using a grammar in your specification, you could state what kind of grammar it is and document the high-level production rules. Also, many protocol define a common structure for several message types, often involving the separation between an envelope (with headers) and a payload. This structure and the role of the headers may then be specified in an additional section that would be added here.
 
-#### 4.3.1. Message MESSAGE_TYPE_1
+#### 4.3.1. UDP messages
 
->In this paragraph, you should provide all the details for one particular type of messages. You will therefore have one such paragraph for every type defined in your protocol.
+>The next messages are used for a first contact between a client and a computing engine 
+
+##### 4.3.1.1 DISCOVERY
+> message sent by a client who need the list of computing engines
+
+##### 4.3.1.2 HERE_I_AM
+> message sent by the computing engine to announce it selfe to the client
+
+#### 4.3.2. TCP messages
+
+>The next messages are used when the client know the server and wants to connect
+
+##### 4.3.2.1 HELLO
+> message sent by a client who wants to connect
+
+##### 4.3.2.2 
+> message sent by the computing engine to announce it selfe to the client
 
 ### 4.4. Miscellaneous Considerations
 
