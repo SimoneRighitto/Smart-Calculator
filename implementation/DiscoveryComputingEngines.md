@@ -22,9 +22,9 @@ speak with them. So we can say that the main goal of the discovery protocol is t
 
 Just to introduce the general idea:
 This protocol uses some defined messages and the broadcasting technique. 
-The protocol is divided in 2 possible scenario. 
-	1. The client start up and need to discovery computing engines 
-	2. A computing engine start up and need to announce itself to already active clients
+The protocol is divided in 2 possible scenario.
+- The client start up and need to discovery computing engines 
+- A computing engine start up and need to announce itself to already active clients
 
 But before starting with technical details here a brief overview of covered Chapters:
 ```
