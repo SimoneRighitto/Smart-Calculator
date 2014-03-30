@@ -75,7 +75,6 @@ Revision history
 
 >Start by showing a state machine diagram, which will give an overview to the readers. Then provide a detailed description of each state.
 
-<center><img width=320 src="images/04/stateMachineDiagram.png"></center>
 
 
 #### 4.2.1. State NAME_OF_THE_STATE_1
