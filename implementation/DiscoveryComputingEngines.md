@@ -1,4 +1,4 @@
-# Distributed Computing Protocol V1.0 Specification : Discovery part
+# Distributed Computing Protocol V1.0 Specification : Dynamic Discovery
 
 
 ```
@@ -17,13 +17,12 @@ Revision history
 
 ## 1. Introduction
 
-This specification is about the Discovery protocol used in the first step of the Distributed Computing Protocol. It is essential for a client to be able to know all computing engines before starting
+This specification is about the Dynamic Discovery protocol used in the first step of the Distributed Computing Protocol. It is essential for a client to be able to know all computing engines before starting
 speak with them. So we can say that the main goal of the discovery protocol is to let a client discovery all available Computing engines.
 
 Just to introduce the general idea:
 This protocol uses some defined messages and the broadcasting technique. 
-The protocol is divided in 2 possible scenario :
-	a) the client start up and need to discovery computing engines
+The protocol is divided in 2 possible scenario. \n 1) the client start up and need to discovery computing engines 
 	b) a computing engine start up and need to announce itself to already active clients
 
 But before starting with technical details here a brief overview of covered Chapters:
