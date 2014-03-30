@@ -27,12 +27,13 @@ The protocol is divided in 2 possible scenario :
 	b) a computing engine start up and need to announce itself to already active clients
 
 But before starting with technical details here a brief overview of covered Chapters:
-
+```
 2. Terminology 		   : glossary section
 3. System Architecture : show the system architecture (components and interactions between components)
 4. Protocol Details    : important details for developers who need to implements the protocol
 5. Examples			   : some example 
 6. References          : ;-)
+```
 
 ## 2. Terminology
 
