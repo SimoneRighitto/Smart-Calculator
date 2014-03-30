@@ -1,4 +1,4 @@
-# MYPROTOCOL V1.0 Specification
+# Distributed Computing Protocol V1.0 Specification : Discovery part
 
 
 ```
@@ -9,20 +9,30 @@ Modified by			: Simone Righitto , Anthony Roubaty
 date				: 30.03.2014
 
 Revision history
-         27.03.2014 : writing the discovery protocol 
-         30.03.2014 : added messages specification
+         27.03.2014 : added messages specification
+         30.03.2014 : writing chapter 1,2,3 and 5
+		 30.03.2014 : completed the message specification
 
 ```
 
 ## 1. Introduction
 
->In the introduction, you have to provide a **gentle** introduction for your readers. Why should they be interested to read your specification? Why should they consider implementing your specification? **Your protocol is going to be used by the components of a distributed system**. Make sure that you explain what this distributed system is doing, what services it offers to users, and what are the main issues that its design needs to address.
+This specification is about the Discovery protocol used in the first step of the Distributed Computing Protocol. It is essential for a client to be able to know all computing engines before starting
+speak with them. So we can say that the main goal of the discovery protocol is to let a client discovery all available Computing engines.
 
->You have to clearly explain **what is the purpose of your protocol** and **what is the problem** it aims to solve. **Provide some broader context** and do not jump too quickly into the technical details.
+Just to introduce the general idea:
+This protocol uses some defined messages and the broadcasting technique. 
+The protocol is divided in 2 possible scenario :
+	a) the client start up and need to discovery computing engines
+	b) a computing engine start up and need to announce itself to already active clients
 
->At this stage, "**Why is this protocol useful?**" is more important than "How does the protocol work?". Nonetheless, it is helpful to **briefly describe the key protocol concepts and principles**. The readers will then be able to find a detailed description of these principles in following sections.
+But before starting with technical details here a brief overview of covered Chapters:
 
->Last but not least, it is a very good idea to **describe the structure of the document**, in other words to briefly explain what the readers will find the different sections of the document. **This will make a big difference for the readers!**
+2. Terminology 		   : glossary section
+3. System Architecture : show the system architecture (components and interactions between components)
+4. Protocol Details    : important details for developers who need to implements the protocol
+5. Examples			   : some example 
+6. References          : ;-)
 
 ## 2. Terminology
 
