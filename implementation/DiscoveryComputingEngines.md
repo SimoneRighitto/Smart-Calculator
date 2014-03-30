@@ -165,26 +165,28 @@ where string(HELLO) represent the string HELLO
 
 where string(HELLO) represent the string HERE_I_AM
 
-note that the field of data are separated by ':' character. This is to be able to split out the TCP port number and serverIP that the client must use to establish a connection with the computing engine 
+note that the field of data are separated by ':' character. This is to be able to split out
+the TCP port number and serverIP that the client must use to establish a connection with the computing engine 
 
 ```
 
 
-### 4.4. Miscellaneous Considerations
 
-> Depending on the actual system and protocol, you will need to address additional issues and specify various elements. Typical topics that are covered in protocol specifications include reliability, caching, scalability, content negotiation, encoding formats and others. You will have to adapt this part of the template to describe what is relevant to your own situation. If you have many questions to answer, then you will most likely split this section into multiple sections.
+### 4.4. Security Considerations
 
-### 4.5. Security Considerations
+>At this level of the Distributed Computing Protocol, there are not security features.
+The protocol don't use encryption and all informations are sent in "plaintext".
+Moreover the protocol is susceptible to Man in the Middle attack. In fact everybody can send to a client a spoofed (or "gratuitous" ) UDP packet pretending to be a computing engine. The client will trust the packet and it may send sensible data to this fake computing engine.
 
->In many protocol specifications, security aspects of the protocol are treated in a dedicated section. Sometimes, the authentication, authorization, confidentiality rules are specified in the main protocol specification. Very often, however, the main protocol specification defines a generic mechanism (e.g. it states that requests should contain an authentication header, without fully specifying what should be transmitted in the header). Other specification documents are then written to use this extension point and to specify one or more different ways to actually handle the authentication in a system implementation. The HTTP specification follows this approach, with authentication mechanisms specified in [RFC 2617](https://tools.ietf.org/html/rfc2617). 
 
 ## 5. Examples
 
->In this section, you should **give examples of interactions between the components** of the distributed system. In previous sections, you have specified detailed rules (messaging patterns, session states, message syntax and semantics, etc.). Developers will use these detailed specifications when they implement your protocol.
+>This is an example to illustrate a client request
+<center><img width=520 src="images/05/ex1.png"></center>
 
->But by providing examples in the document, **you will help them in two ways**. Firstly, it will be **easier for them to understand what your protocol does and how**. Analyzing at a concrete dialog between a client and a server is often easier than directly digging into a more abstract definition. Secondly, it will allow them to **confirm their understanding of the protocol specification**. After reading the different rules specified in the previous sections, they will have a way to check that they have understood them correctly.
-
+>This example illustrate a spontaneous computing engine announcement
+ <center><img width=520 src="images/05/ex2.png"></center>
 
 ## 6. References
 
->Very often, you will provide references to other protocol specifications and/or to other documents. This is something that you should do in a specific section of your document.
+> My Brain ;-)
