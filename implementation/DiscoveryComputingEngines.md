@@ -132,9 +132,7 @@ is given on the second part of the Distributed Computing Protocol.
 
 ### 4.3. Message Types, Syntax and Semantics
 
->In this section, you should describe in details what messages are exchanged by system components, how they are structured and encoded, when they should be sent and what should happen when they are received.
-
-> It is a good idea to write one paragraph for each type of message. Very often, you will also want to document some decisions that are valid for all messages. For example, you could state that all messages are encoded in JSON or in XML. Or, if you are using a grammar in your specification, you could state what kind of grammar it is and document the high-level production rules. Also, many protocol define a common structure for several message types, often involving the separation between an envelope (with headers) and a payload. This structure and the role of the headers may then be specified in an additional section that would be added here.
+>In this section, we will describe in detail all type of messages exchanged during the Discovery protocol.
 
 #### 4.3.1. UDP messages
 
@@ -143,8 +141,33 @@ is given on the second part of the Distributed Computing Protocol.
 ##### 4.3.1.1 HELLO
 > message sent by a client who need the list of computing engines
 
+```
+--------------------------------------------------------------------
+|                                                                  |
+| src_ip = clientIP || dst_ip = Broadcast || data = string(HELLO)  |
+|                                                                  |
+--------------------------------------------------------------------
+
+where string(HELLO) represent the string HELLO
+
+```
+
+
 ##### 4.3.1.2 HERE_I_AM
-> message sent by the computing engine to announce it selfe to the client
+> message sent by the computing engine to announce it self to the client
+
+```
+------------------------------------------------------------------------------------------------------------|
+|                                                  --------------------------------------------------|      |
+| src_ip = serverIP || dst_ip = clientIP || data = | string(HERE_I_AM) : TCP port number : serverIP  |      |
+|                                                  --------------------------------------------------|      |
+------------------------------------------------------------------------------------------------------------|
+
+where string(HELLO) represent the string HERE_I_AM
+
+note that the field of data are separated by ':' character. This is to be able to split out the TCP port number and serverIP that the client must use to establish a connection with the computing engine 
+
+```
 
 
 ### 4.4. Miscellaneous Considerations
