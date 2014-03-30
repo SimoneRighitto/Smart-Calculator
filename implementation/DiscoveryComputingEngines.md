@@ -58,8 +58,8 @@ The client send an HELLO message over broadcast and then listen to computing eng
 
 ### 3.2. System Components
 
-Smart calculator : the client side of the protocol. 
-Computing engine: the server side of the protocol. 
+- Smart calculator : the client side of the protocol. 
+- Computing engine: the server side of the protocol. 
 
 
 #### 3.2.1. Smart calculator
@@ -73,9 +73,11 @@ Computing engine: the server side of the protocol.
 
 ### 3.3. Interactions Between Components
 
->Insert one or more **sequence diagrams** here, to show the high-level interactions between the components (request-replies, discovery, etc.). This is not the place to give all the details, but it should give the reader a general understanding of what is happening at runtime. For each sequence diagram, explain the reason for which the components are interacting with each other (i.e. state the purpose of the interaction).
+>Here we can see what the discovery broadcast look like
+<center><img width=520 src="images/03/discovery_broadcast.png"></center>
 
-<center><img width=520 src="images/04/sequenceDiagram.png"></center>
+>And with more details
+<center><img width=520 src="images/03/sequence_diag.png"></center>
 
 
 
