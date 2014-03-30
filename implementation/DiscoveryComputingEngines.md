@@ -98,7 +98,7 @@ over UDP (port 5050). The server receive the HELLO call and send back an UDP dat
 
 >In this section we can see the state diagram of our protocol
 
-<center><img width=320 src="images/04/stateMachineDiagram_v2.png"></center>
+<center><img width=520 src="images/04/stateMachineDiagram_v2.png"></center>
 
 
 #### 4.2.1. Computing engine state
