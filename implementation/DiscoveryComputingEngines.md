@@ -57,7 +57,7 @@ The client send an HELLO message over broadcast and then listen to computing eng
 <center><img width=520 src="images/03/component_diag.png"></center>
 
 ### 3.2. System Components
->
+
 Smart calculator : the client side of the protocol. 
 Computing engine: the server side of the protocol. 
 
